@@ -7,6 +7,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "assets" / "br-locadora-logo.png"
 TRANSPARENT = ROOT / "assets" / "br-locadora-logo-transparent.png"
 FAVICON = ROOT / "favicon.ico"
+FAVICON_PNG = ROOT / "assets" / "favicon-512.png"
 
 
 def read_png(path):
@@ -216,6 +217,7 @@ def main():
     width, height, rows = read_png(SOURCE)
     rgba_rows = transparent_logo(width, height, rows)
     write_rgba_png(TRANSPARENT, width, height, rgba_rows)
+    write_rgba_png(FAVICON_PNG, 512, 512, resize_nearest(rgba_rows, width, height, 512))
     make_ico(FAVICON, width, height, rgba_rows)
 
 
